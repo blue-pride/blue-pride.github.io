@@ -73,6 +73,43 @@
             font-weight: bold;
             color: #FACC15; /* 黄色 */
         }
+        /* モーダルのスタイル */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7); /* 半透明の黒いオーバーレイ */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* 他の要素より手前に表示 */
+        }
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            animation: fadeIn 0.3s ease-out; /* フェードインアニメーション */
+        }
+        .modal-close-button {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #6B7280; /* Gray-500 */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -100,7 +137,7 @@
             <p class="text-2xl md:text-3xl font-bold bg-blue-800 bg-opacity-70 inline-block px-4 py-2 rounded-lg mb-8 rounded-md">
                 大田区限定の身元保証サービス
             </p>
-            <a href="#contact" class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg text-xl transition duration-300 ease-in-out transform hover:scale-105">
+            <a href="#" id="openModalBtnHero" class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg text-xl transition duration-300 ease-in-out transform hover:scale-105">
                 今すぐ無料相談を申し込む！
             </a>
         </div>
@@ -192,14 +229,14 @@
         <!-- 行動喚起（Call to Action）セクション -->
         <section id="contact" class="bg-blue-700 text-white p-8 rounded-lg shadow-xl text-center my-16">
             <h3 class="text-3xl md:text-4xl font-bold mb-4 rounded-md">
-                無料相談を申し込む！
+                無料相談・お問い合わせ
             </h3>
             <p class="text-lg mb-6 rounded-md">
                 ご興味をお持ちいただけましたか？<br>
                 身元保証に関するお悩みや、他サービスからの切り替えをご検討中の方も、お気軽にご相談ください。
             </p>
-            <a href="tel:07085564447" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-4 px-8 rounded-full shadow-lg text-xl transition duration-300 ease-in-out transform hover:scale-105">
-                無料相談を申し込む！
+            <a href="#" id="openModalBtnContact" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-4 px-8 rounded-full shadow-lg text-xl transition duration-300 ease-in-out transform hover:scale-105">
+                今すぐ無料相談する
             </a>
             <p class="text-sm mt-4 rounded-md">
                 電話番号: 070-8556-4447<br>
@@ -216,5 +253,122 @@
             <p class="text-sm mt-2 rounded-md">〒144-0051 | プライバシーポリシー | 利用規約</p>
         </div>
     </footer>
+
+    <!-- お問い合わせフォームのモーダル -->
+    <div id="contactModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button id="closeModalBtn" class="modal-close-button">&times;</button>
+            <h3 class="text-2xl font-bold text-blue-700 mb-6 text-center rounded-md">無料相談・お問い合わせフォーム</h3>
+            <!-- Formspreeと連携するためのactionとmethodを設定 -->
+            <form id="inquiryForm" action="https://formspree.io/f/mpwlzvlg" method="POST" class="space-y-4">
+                <div>
+                    <label for="name" class="block text-gray-700 text-sm font-bold mb-2 rounded-md">お名前:</label>
+                    <input type="text" id="name" name="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline rounded-md" required>
+                </div>
+                <!-- フリガナ項目を追加 -->
+                <div>
+                    <label for="furigana" class="block text-gray-700 text-sm font-bold mb-2 rounded-md">フリガナ:</label>
+                    <input type="text" id="furigana" name="furigana" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline rounded-md" required>
+                </div>
+                <div>
+                    <label for="email" class="block text-gray-700 text-sm font-bold mb-2 rounded-md">メールアドレス:</label>
+                    <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline rounded-md" required>
+                </div>
+                <div>
+                    <label for="message" class="block text-gray-700 text-sm font-bold mb-2 rounded-md">お問い合わせ内容:</label>
+                    <textarea id="message" name="message" rows="5" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline rounded-md" required></textarea>
+                </div>
+                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline w-full rounded-md">
+                    送信する
+                </button>
+            </form>
+            <div id="successMessage" class="hidden text-center mt-4 text-green-600 font-semibold rounded-md">
+                お問い合わせありがとうございます！
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM要素の取得
+        const contactModal = document.getElementById('contactModal');
+        const openModalBtnHero = document.getElementById('openModalBtnHero');
+        const openModalBtnContact = document.getElementById('openModalBtnContact');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const inquiryForm = document.getElementById('inquiryForm');
+        const successMessage = document.getElementById('successMessage');
+
+        // モーダルを開く関数
+        function openModal(event) {
+            event.preventDefault(); // デフォルトのリンク動作を防止
+            contactModal.classList.remove('hidden');
+            successMessage.classList.add('hidden'); // 成功メッセージを非表示にする
+            inquiryForm.classList.remove('hidden'); // フォームを再表示する
+            inquiryForm.reset(); // フォームをリセットする
+        }
+
+        // モーダルを閉じる関数
+        function closeModal() {
+            contactModal.classList.add('hidden');
+        }
+
+        // ボタンにクリックイベントリスナーを追加
+        if (openModalBtnHero) {
+            openModalBtnHero.addEventListener('click', openModal);
+        }
+        if (openModalBtnContact) {
+            openModalBtnContact.addEventListener('click', openModal);
+        }
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', closeModal);
+        }
+        // オーバーレイをクリックしても閉じられるようにする
+        if (contactModal) {
+            contactModal.addEventListener('click', function(event) {
+                if (event.target === contactModal) { // オーバーレイ自体がクリックされた場合のみ
+                    closeModal();
+                }
+            });
+        }
+
+        // FormspreeのAjax送信を処理
+        // FormspreeのJavaScriptライブラリを読み込む代わりに、fetch APIを使って直接送信します
+        if (inquiryForm) {
+            inquiryForm.addEventListener('submit', async function(event) {
+                event.preventDefault(); // フォームのデフォルト送信を防止
+
+                const form = event.target;
+                const formData = new FormData(form);
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: form.method,
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json' // FormspreeがJSONレスポンスを返すように指定
+                        }
+                    });
+
+                    if (response.ok) { // 成功した場合
+                        inquiryForm.classList.add('hidden'); // フォームを非表示にする
+                        successMessage.classList.remove('hidden'); // 成功メッセージを表示する
+                        setTimeout(() => {
+                            closeModal();
+                        }, 3000); // 3秒後にモーダルを自動的に閉じる
+                    } else { // 失敗した場合
+                        const data = await response.json();
+                        if (data.errors) {
+                            console.error('Formspree errors:', data.errors);
+                            alert('フォームの送信に失敗しました。入力内容を確認してください。'); // エラーメッセージを表示
+                        } else {
+                            alert('フォームの送信中にエラーが発生しました。');
+                        }
+                    }
+                } catch (error) {
+                    console.error('Network error:', error);
+                    alert('ネットワークエラーが発生しました。インターネット接続を確認してください。');
+                }
+            });
+        }
+    </script>
 </body>
 </html>
