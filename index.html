@@ -68,11 +68,11 @@
             max-width: 600px; /* 最大幅 */
             width: 100%; /* レスポンシブ対応 */
         }
-        .price-amount {
-            font-size: 2.5rem; /* 価格の文字サイズ */
+        /* .price-amount の固定フォントサイズを削除し、Tailwindクラスで制御 */
+        /* .price-amount {
             font-weight: bold;
-            color: #FACC15; /* 黄色 */
-        }
+            color: #FACC15;
+        } */
         /* モーダルのスタイル */
         .modal-overlay {
             position: fixed;
@@ -131,10 +131,12 @@
     <section class="hero-section text-center">
         <div class="hero-content">
             <p class="text-xl md:text-2xl font-semibold mb-2 rounded-md">もう、お一人で悩まないでください。</p>
-            <h2 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4 rounded-md">
+            <!-- モバイル向けに文字サイズを調整 -->
+            <h2 class="text-3xl md:text-5xl font-extrabold leading-tight mb-4 rounded-md">
                 あなたの身元保証のお悩みを解消します！
             </h2>
-            <p class="text-2xl md:text-3xl font-bold bg-blue-800 bg-opacity-70 inline-block px-4 py-2 rounded-lg mb-8 rounded-md">
+            <!-- モバイル向けに文字サイズを調整 -->
+            <p class="text-xl md:text-3xl font-bold bg-blue-800 bg-opacity-70 inline-block px-4 py-2 rounded-lg mb-8 rounded-md">
                 大田区限定の身元保証サービス
             </p>
             <a href="#" id="openModalBtnHero" class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg text-xl transition duration-300 ease-in-out transform hover:scale-105">
@@ -201,8 +203,9 @@
                 料金プラン
             </h3>
             <div class="price-box mx-auto">
-                <p class="text-2xl md:text-3xl font-bold mb-4 rounded-md">契約金：<span class="price-amount">41万8,000円</span> (税込)</p>
-                <p class="text-2xl md:text-3xl font-bold mb-4 rounded-md">月額利用料：<span class="price-amount">19,800円</span> (税込)</p>
+                <!-- モバイル向けに文字サイズを調整 -->
+                <p class="text-xl md:text-3xl font-bold mb-4 rounded-md">契約金：<span class="text-yellow-400 text-2xl md:text-4xl font-bold">41万8,000円</span> (税込)</p>
+                <p class="text-xl md:text-3xl font-bold mb-4 rounded-md">月額利用料：<span class="text-yellow-400 text-2xl md:text-4xl font-bold">19,800円</span> (税込)</p>
                 <p class="text-lg md:text-xl rounded-md">預託金無し ＋ 週に一度の訪問見守り無料サービス</p>
             </div>
         </section>
@@ -250,7 +253,7 @@
     <footer class="bg-gray-800 text-white p-6 text-center mt-8">
         <div class="container mx-auto">
             <p class="text-sm rounded-md">&copy; 2025 合同会社ブループライド. All rights reserved.</p>
-            <p class="text-sm mt-2 rounded-md">〒144-0051 | プライバシーポリシー | 利用規約</p>
+            <p class="text-sm mt-2 rounded-md">〒144-0051</p>
         </div>
     </footer>
 
