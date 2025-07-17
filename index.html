@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大田区限定の身元保証サービス - 合同会社ブループライド</title>
+    <!-- Tailwind CSSを読み込みます。 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Google Fontsから「Inter」フォントを読み込みます。 */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* ヒーローセクションの背景画像とオーバーレイ */
+        .hero-section {
+            background-image: url('http://googleusercontent.com/file_content/1'); /* チラシ1枚目の画像 */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            color: white;
+            padding: 4rem 1rem; /* 上下のパディングを調整 */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* テキストの視認性を高める影 */
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 255, 0.4); /* 青いオーバーレイ */
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 960px; /* コンテンツの最大幅を制限 */
+            margin: 0 auto; /* 中央寄せ */
+        }
+        /* 特徴セクションのアイコンとテキストの配置 */
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #F0F8FF; /* 淡い青の背景 */
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+        .feature-icon {
+            font-size: 3rem; /* アイコンサイズ */
+            color: #3B82F6; /* 青色 */
+            margin-bottom: 1rem;
+        }
+        /* 料金プランの強調 */
+        .price-box {
+            background-color: #1D4ED8; /* 濃い青 */
+            color: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+            display: inline-block; /* コンテンツに合わせて幅を調整 */
+            max-width: 600px; /* 最大幅 */
+            width: 100%; /* レスポンシブ対応 */
+        }
+        .price-amount {
+            font-size: 2.5rem; /* 価格の文字サイズ */
+            font-weight: bold;
+            color: #FACC15; /* 黄色 */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- ヘッダーセクション -->
+    <header class="bg-blue-700 text-white p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold rounded-md">合同会社ブループライド</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="#features" class="hover:underline rounded-md p-2">サービスの特徴</a></li>
+                    <li><a href="#pricing" class="hover:underline rounded-md p-2">料金プラン</a></li>
+                    <li><a href="#contact" class="hover:underline rounded-md p-2">お問い合わせ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション (チラシ1枚目の上部を再現) -->
+    <section class="hero-section text-center">
+        <div class="hero-content">
+            <p class="text-xl md:text-2xl font-semibold mb-2 rounded-md">もう、お一人で悩まないでください。</p>
+            <h2 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4 rounded-md">
+                あなたの身元保証のお悩みを解消します！
+            </h2>
+            <p class="text-2xl md:text-3xl font-bold bg-blue-800 bg-opacity-70 inline-block px-4 py-2 rounded-lg mb-8 rounded-md">
+                大田区限定の身元保証サービス
+            </p>
+            <a href="#contact" class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg text-xl transition duration-300 ease-in-out transform hover:scale-105">
+                今すぐ無料相談を申し込む！
+            </a>
+        </div>
+    </section>
+
+    <main class="container mx-auto my-8 p-4 md:p-8 bg-white rounded-lg shadow-lg">
+        <!-- お悩み解消セクション (チラシ1枚目の中央部を再現) -->
+        <section class="my-16 text-center">
+            <h3 class="text-3xl font-bold text-blue-700 mb-8 rounded-md">
+                皆様の身元保証のお悩みを解消します！
+            </h3>
+            <div class="max-w-3xl mx-auto text-left text-lg text-gray-700 space-y-4">
+                <ul class="list-disc list-inside space-y-2 pl-4">
+                    <li>病院や施設に入るのに、身元保証人がいなくて困っている…</li>
+                    <li>家族に迷惑をかけたくないけど、将来が不安…</li>
+                    <li>遠方に住む親のことが心配だけど、頻繁には見に行けない…</li>
+                </ul>
+                <p class="mt-6 rounded-md">
+                    そのお悩み私たちにお任せください！<br>
+                    大田区に根差した当社が、お客様一人ひとりに寄り添い、「安心」と「信頼」をお届けします。
+                </p>
+            </div>
+        </section>
+
+        <!-- サービスの3つの「ポイント」セクション (チラシ2枚目の上部を再現) -->
+        <section id="features" class="my-16 text-center">
+            <h3 class="text-3xl font-bold text-blue-700 mb-8 rounded-md">
+                サービスの3つの「ポイント」
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- ポイント1: 安心価格 -->
+                <div class="feature-item">
+                    <div class="feature-icon">💰</div>
+                    <h4 class="text-xl font-semibold mb-2 rounded-md">安心価格</h4>
+                    <p class="text-gray-700 rounded-md">
+                        高額になりがちな身元保証サービスを、できるだけ検討しやすい価格で実現。大田区に限定し、地域に密着することでコストを削減し、質の高いサービスをこの安心価格でご提供。
+                    </p>
+                </div>
+                <!-- ポイント2: スピード審査 -->
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h4 class="text-xl font-semibold mb-2 rounded-md">スピード審査</h4>
+                    <p class="text-gray-700 rounded-md">
+                        急な入院や施設入居でも、お客様をお待たせしません。必要書類が揃っていれば、最短翌日～3日以内に審査結果をご連絡。迅速な対応で緊急時の不安を解消します。
+                    </p>
+                </div>
+                <!-- ポイント3: 安心サポート -->
+                <div class="feature-item">
+                    <div class="feature-icon">🤝</div>
+                    <h4 class="text-xl font-semibold mb-2 rounded-md">安心サポート</h4>
+                    <p class="text-gray-700 rounded-md">
+                        「一生涯の身元保証」と「毎週の訪問見守り」で徹底サポート。お客様の生涯に渡り、体調や生活状況を確認し、不安を感じさせない、きめ細やかな見守りです。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 料金プランセクション (チラシ1枚目の下部を再現) -->
+        <section id="pricing" class="my-16 text-center">
+            <h3 class="text-3xl font-bold text-blue-700 mb-8 rounded-md">
+                料金プラン
+            </h3>
+            <div class="price-box mx-auto">
+                <p class="text-2xl md:text-3xl font-bold mb-4 rounded-md">契約金：<span class="price-amount">41万8,000円</span> (税込)</p>
+                <p class="text-2xl md:text-3xl font-bold mb-4 rounded-md">月額利用料：<span class="price-amount">19,800円</span> (税込)</p>
+                <p class="text-lg md:text-xl rounded-md">預託金無し ＋ 週に一度の訪問見守り無料サービス</p>
+            </div>
+        </section>
+
+        <!-- すでに他のサービスをご利用中の皆様へ (チラシ2枚目の下部を再現) -->
+        <section class="my-16 text-center">
+            <h3 class="text-3xl font-bold text-blue-700 mb-8 rounded-md">
+                すでに他のサービスをご利用中の皆様へ
+            </h3>
+            <div class="max-w-3xl mx-auto text-left text-lg text-gray-700 space-y-4">
+                <ul class="list-disc list-inside space-y-2 pl-4">
+                    <li>費用がもう少し安ければ…</li>
+                    <li>預託金が重くご負担に…</li>
+                    <li>もっと頻繁に見守りに来てくれたら…</li>
+                    <li>緊急時の対応が遅いと感じる時がある…</li>
+                </ul>
+                <p class="mt-6 rounded-md">
+                    少しでもそう感じましたら、ぜひ一度、私たちのサービスと比較してみてください。<br>
+                    お客様の「もっとこうだったら…」を解決します。切り替えのご相談やその他のことでもお気軽にお問い合わせください。
+                </p>
+            </div>
+        </section>
+
+        <!-- 行動喚起（Call to Action）セクション -->
+        <section id="contact" class="bg-blue-700 text-white p-8 rounded-lg shadow-xl text-center my-16">
+            <h3 class="text-3xl md:text-4xl font-bold mb-4 rounded-md">
+                無料相談を申し込む！
+            </h3>
+            <p class="text-lg mb-6 rounded-md">
+                ご興味をお持ちいただけましたか？<br>
+                身元保証に関するお悩みや、他サービスからの切り替えをご検討中の方も、お気軽にご相談ください。
+            </p>
+            <a href="tel:07085564447" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-4 px-8 rounded-full shadow-lg text-xl transition duration-300 ease-in-out transform hover:scale-105">
+                無料相談を申し込む！
+            </a>
+            <p class="text-sm mt-4 rounded-md">
+                電話番号: 070-8556-4447<br>
+                メール: bule.pride0515@gmail.com<br>
+                ※ご相談は無料です。お気軽にご連絡ください。
+            </p>
+        </section>
+    </main>
+
+    <!-- フッターセクション -->
+    <footer class="bg-gray-800 text-white p-6 text-center mt-8">
+        <div class="container mx-auto">
+            <p class="text-sm rounded-md">&copy; 2025 合同会社ブループライド. All rights reserved.</p>
+            <p class="text-sm mt-2 rounded-md">〒144-0051 | プライバシーポリシー | 利用規約</p>
+        </div>
+    </footer>
+</body>
+</html>
